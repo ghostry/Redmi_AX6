@@ -1,0 +1,20 @@
+# 系统切换
+
+### 切换到系统1
+fw_setenv flag_last_success 0
+fw_setenv flag_boot_rootfs 0
+reboot
+
+### 切换到系统2
+fw_setenv flag_last_success 1
+fw_setenv flag_boot_rootfs 1
+reboot
+
+# 刷机
+不可刷当前系统，系统1空间35MB，系统2空间66MB
+
+### 刷系统1
+ubiformat /dev/mtd12 -y -f /tmp/openwrt-ipq807x-generic-redmi_ax6-squashfs-nand-factory.ubi
+
+### 刷系统2
+ubiformat /dev/mtd13 -y -f /tmp/openwrt-ipq807x-generic-redmi_ax6-squashfs-nand-factory.ubi
